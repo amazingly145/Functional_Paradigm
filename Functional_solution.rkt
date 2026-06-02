@@ -5,9 +5,13 @@
 (define double-digits
   (lambda (n)
     (cond
+      ;caso base
+      ;hasta que el cosciente sea cero
+      ;signfica que ya no se puede dividir mas veces
       [(= n 0) 0]
       [else
        (+ (modulo n 10)
+          ; hasta que te quede el digito con un solo numero
           (double-digits (quotient n 10)))])))
 
 ; Funcion para crear la lista
@@ -35,8 +39,9 @@
        ; toma la lista 2
        (cons (car l2) (merge (cdr l2) l1))])))
 
-; Obtenemos los numeros en posiciones impares 
-(define split-odd
+; Obtenemos los primeros numeros
+; impar
+(define split-firsts
   (lambda (l)
     (cond
       [(null? l) '()]
@@ -44,17 +49,18 @@
       [(null? (cdr l)) l]
       [else
        ; Toma el primer elemento de la lista
-       (cons (car l) (split-odd (cdr (cdr l))))])))
+       (cons (car l) (split-firsts (cdr (cdr l))))])))
 
-; Ordenamos la lista con los numeros de la lista pares
-(define split-even
+; Ordenamos los segundos numero
+; par 
+(define split-seconds
   (lambda (l)
     (cond
       [(null? l) '()]
       [(null? (cdr l)) '()]
       [else
        ; Tomas el segundo elemento, hay saltos de dos en dos
-       (cons (car (cdr l)) (split-even (cdr (cdr l))))])))
+       (cons (car (cdr l)) (split-seconds (cdr (cdr l))))])))
 
 ; Funcion que ordena la lista
 (define merge-sort
@@ -66,9 +72,9 @@
        ; Se unen las dos mitades
        (merge
         ; Se ordena posiciones impares
-        (merge-sort (split-odd l))
+        (merge-sort (split-firsts l))
         ; Se ordena en posiciones pares 
-        (merge-sort (split-even l)))])))
+        (merge-sort (split-seconds l)))])))
 
 ; Suma todos los elementos de la lista
 ; Vamos sumano elementos de la lista
@@ -93,10 +99,16 @@
 (define caso_3  5)
 (define caso_4  9)
 (define caso_5  200000)
+(define caso_6 1434)
+(define caso_7 2024)
+(define caso_8 300000)
 
-;; Llamadas directas
+;;We call de cases
 (vlad-sum caso_1)
 (vlad-sum caso_2)
 (vlad-sum caso_3)
 (vlad-sum caso_4)
 (vlad-sum caso_5)
+(vlad-sum caso_6)
+(vlad-sum caso_7)
+(vlad-sum caso_8)
