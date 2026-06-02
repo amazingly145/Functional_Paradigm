@@ -1,0 +1,21 @@
+#lang racket
+; C. Vlad and a Sum of Sum of Digits
+(define double-digits
+  (lambda (n)
+    (cond
+      [(= n 0) 0]
+      [else
+       (+ (modulo n 10)
+          (double-digits (quotient n 10)))])))
+
+(define create-list
+  (lambda (n counter my-list)
+    (cond
+      [(> counter n) my-list]
+      [else
+       (create-list n
+                    (+ counter 1)
+                    (cons (double-digits counter) my-list))])))
+
+
+
