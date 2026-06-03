@@ -275,7 +275,7 @@ Then the function of every case is called in racket in order to get the final nu
 
 ## Analysis
 ### Time Complexity
-The program has a complexity of O(n^2), this is due to the last function, implementing multiple functions concatenated to get the final result. Processing each of the elements but for every element member is called. Making the functon a two operation part, so this makes the complexity of the problem O(n^2)
+The program has a complexity of O(n^2), this is due to the last function, implementing multiple functions concatenated to get the final result. Processing each of the elements but for every element member is called. Making the functon a two operation part, so this makes the complexity of the problem O(n^2). The merge sort has a complexity of O(log n) making it easier and fatser when the list is being ordered.
 
 ### Another Paradigm
 Another paradigm implemented is the logical one, using Prolog. In here it is implemented similarly as in racket except that a path is more clearly seen here. Some of the reasons why the functional paradigm is better than logical paradigm in this case:
@@ -285,6 +285,8 @@ Another paradigm implemented is the logical one, using Prolog. In here it is imp
 
 ### Other Solution
 As told before the other solution is using logical paradigm, with prolog and eventhough the racket solution is better. Prolog it's not a bad idea to be used to solve the problem.
+Using a logical solution would be more complex as you are not using functions but facts, making it more complicated to create and develope. Using functional paradigm is a more natural way of looking at the problem as the use of functions makes it easier and cleaner to code. 
+Also, Prolog tries to find a relationship between two elements. Making it harder to process.
 
 ### Reference
 http://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Functional%20Programming%20For%20The%20Real%20World.pdf
