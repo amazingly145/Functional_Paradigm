@@ -52,10 +52,18 @@ In a functional program we cannot modify a variable after it has been initialize
 - It avoids repeated code: because functions are only used when necessary, it avoids using useless code.
 
 ## The model diagram
-For the visual implementation of how my code works, I did a diagram explaining how was the thought process of my code:
-![diagrama](diagrama.png)
+To explain the implementation of my code, I designed different diagrams to show the execution and the thought process behind it. For this first diagram the main idea is to viusally represent how the code goes through the list and the different implementations are made:
 
-In this diagram you a see how the functions process the information so that we can get to our final result.
+![diagrama](diagrama_1.png)
+
+In this diagram you a see how the code process the information so that we can get to our final result. This is done through lambda and functions, to make it cleaner and easier to go through this process. This first three diagrams explain the process and the implementation of the functions from eliminating double digits to doing the merge between both lists.
+![diagrama](diagramas_paradigma_funcional_1.png)
+
+In this other three diagrams is the final explanation of how the merge sort is implemented, using two lists that were designed before. 
+![diagrama](diagramas_paradigma_funcional_2.png)
+
+Finally, in this two diagrams are the explanation of how the function goes through the list to add each element and the last function is everything concatenated from creating the list to adding the number of each element in the list.
+![diagrama](diagramas_paradigma_funcional_3.png)
 
 ## Models
 As we have talked before. Functional Paradigm is based on functions and the lambda calculus. In order to get the solution of the problem I created different functions that would help us. 
@@ -103,8 +111,8 @@ Now that we have our principal functions, I implemented several other functions.
 (define merge
   (lambda (l1 l2)
     (cond
-      [(null? l1) l2]
-      [(null? l2) l1]
+      [(empty? l1) l2]
+      [(empty? l2) l1]
       ; Si primer elemento de l1 es menor
       ; toma el valor de la lista 1
       [(< (car l1) (car l2))
@@ -113,40 +121,42 @@ Now that we have our principal functions, I implemented several other functions.
        ; toma la lista 2
        (cons (car l2) (merge (cdr l2) l1))])))
 
-; Obtenemos los numeros en posiciones impares 
-(define split-odd
+; Obtenemos los primeros numeros
+; impar
+(define split-firsts
   (lambda (l)
     (cond
-      [(null? l) '()]
+      [(empty? l) '()]
       ; Si hay un elemento regresa ese elemento
-      [(null? (cdr l)) l]
+      [(empty? (cdr l)) l]
       [else
        ; Toma el primer elemento de la lista
-       (cons (car l) (split-odd (cdr (cdr l))))])))
-
-; Ordenamos la lista con los numeros de la lista pares
-(define split-even
+       (cons (car l) (split-firsts (cdr (cdr l))))])))
+ 
+; Ordenamos los segundos numero
+; par 
+(define split-seconds
   (lambda (l)
     (cond
-      [(null? l) '()]
-      [(null? (cdr l)) '()]
+      [(empty? l) '()]
+      [(empty? (cdr l)) '()]
       [else
        ; Tomas el segundo elemento, hay saltos de dos en dos
-       (cons (car (cdr l)) (split-even (cdr (cdr l))))])))
+       (cons (car (cdr l)) (split-seconds (cdr (cdr l))))])))
 
 ; Funcion que ordena la lista
 (define merge-sort
   (lambda (l)
     (cond
-      [(null? l) l]
-      [(null? (cdr l)) l]
+      [(empty? l) l]
+      [(empty? (cdr l)) l]
       [else
        ; Se unen las dos mitades
        (merge
-        ; Se ordena posiciones impares
-        (merge-sort (split-odd l))
-        ; Se ordena en posiciones pares 
-        (merge-sort (split-even l)))])))
+        ; Se ordena primeras posiciones 
+        (merge-sort (split-firsts l))
+        ; Se ordena segundas posiciones
+        (merge-sort (split-seconds l)))])))
 ```
 
 How it was implemented, is that the list is divided in two. The numbers with an odd index integer and the numbers with an even index integer. Both lists are then ordered from smallest to biggest number and finally they are both combined to get one final list.
@@ -180,7 +190,7 @@ Finally I implemented a function, where the function is called and in here you c
 
 ## Tests
 
-For the tests, I put different integers, with different lengths, I divided the tests into two, the first one are the test cases with their respective number.
+For the tests, I put different integers, with different lengths, I divided the tests into two, the first one are the test cases with their respective number. 
 
 ```Racket
 ;; Casos de prueba
@@ -192,8 +202,76 @@ For the tests, I put different integers, with different lengths, I divided the t
 (define caso_6 1434)
 (define caso_7 2024)
 (define caso_8 300000)
+(define caso_9 2)          
+(define caso_10 7)         
+(define caso_11 11)        
+(define caso_12 99)        
+(define caso_13 9999)      
+(define caso_14 12345)     
+(define caso_15 199999)    
+(define caso_16 111111)
+(define caso_17 3)
+(define caso_18 8)
+(define caso_19 15)
+(define caso_20 33)
+(define caso_21 74)
+(define caso_22 89)
+(define caso_23 111)
+(define caso_24 246)
+(define caso_25 789)
+(define caso_26 999)
+(define caso_27 1234)
+(define caso_28 5555)
+(define caso_29 8765)
+(define caso_30 11111)
+(define caso_31 12345)
+(define caso_32 44444)
+(define caso_33 99999)
+(define caso_34 111111)
+(define caso_35 155555)
+(define caso_36 222222)
 ```
+Then the function of every case is called in racket in order to get the final number that we are looking. To get the result of this test cases, we have to just run the code so we can get the final answer that we are looking for
 
+```racket
+;;We call de cases
+(vlad-sum caso_1)
+(vlad-sum caso_2)
+(vlad-sum caso_3)
+(vlad-sum caso_4)
+(vlad-sum caso_5)
+(vlad-sum caso_6)
+(vlad-sum caso_7)
+(vlad-sum caso_8)
+(vlad-sum caso_9)
+(vlad-sum caso_10)
+(vlad-sum caso_11)
+(vlad-sum caso_12)
+(vlad-sum caso_13)
+(vlad-sum caso_14)
+(vlad-sum caso_15)
+(vlad-sum caso_16)
+(vlad-sum caso_17)
+(vlad-sum caso_18)
+(vlad-sum caso_19)
+(vlad-sum caso_20)
+(vlad-sum caso_21)
+(vlad-sum caso_22)
+(vlad-sum caso_23)
+(vlad-sum caso_24)
+(vlad-sum caso_25)
+(vlad-sum caso_26)
+(vlad-sum caso_27)
+(vlad-sum caso_28)
+(vlad-sum caso_29)
+(vlad-sum caso_30)
+(vlad-sum caso_31)
+(vlad-sum caso_32)
+(vlad-sum caso_33)
+(vlad-sum caso_34)
+(vlad-sum caso_35)
+(vlad-sum caso_36)
+```
 
 ## Analysis
 ### Time Complexity
@@ -210,5 +288,3 @@ As told before the other solution is using logical paradigm, with prolog and eve
 
 ### Reference
 http://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Functional%20Programming%20For%20The%20Real%20World.pdf
-
-
