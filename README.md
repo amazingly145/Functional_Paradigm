@@ -282,6 +282,14 @@ Another paradigm implemented is the logical one, using Prolog. In here it is imp
 - Clarity of intent: In racket, the solution comes like a series of steps: eliminate duplicates, count and check list. In Prolog this is implemented as logical clauses and relies in unification, but this makes the solution more complex than needed
 - Determinism: Prorlog's solution is based on goal solution and can explore multiple paths. But in this case there is only one solution per problem or input. Rcket's purely functionality makes it very straight forward and single response.
 - No side effects: the Prolog's solution requires a negation "/+" which makes the solution prooedual when it is purely semantic. Raacket's member and cond makes it cleaner.
+- We are going to use state of facts and recursion instead of functions, that are the ones that we use in the functional paradigm.
+
+For the explanation of how the problem could be implemented, using logial paradigm. I designed a graphic that can help this understanding and how it could be implemented:
+
+![examples](Paradigma_logico.png)
+
+In the graphic we can see that using logical paradigm is more complicated, because instead of using functions, you use facts and logical relationships. Making it a much harder and longer process to code everyrhing given. In this hypothetical solution it is also much clear the base and although the implementation doesn't change that much. It is much harder in the part of the code.
+
 
 ### Other Solution
 As told before the other solution is using logical paradigm, with prolog and eventhough the racket solution is better. Prolog it's not a bad idea to be used to solve the problem.
@@ -289,4 +297,4 @@ Using a logical solution would be more complex as you are not using functions bu
 Also, Prolog tries to find a relationship between two elements. Making it harder to process.
 
 ### Reference
-http://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Functional%20Programming%20For%20The%20Real%20World.pdf
+Petricek, T., y Skeet, J. (2009). Real-world functional programming: With examples in F# and C#. Manning Publications. http://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Functional%20Programming%20For%20The%20Real%20World.pdf
