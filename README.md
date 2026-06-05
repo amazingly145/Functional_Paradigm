@@ -298,3 +298,9 @@ Also, Prolog tries to find a relationship between two elements. Making it harder
 
 ### Reference
 Petricek, T., y Skeet, J. (2009). Real-world functional programming: With examples in F# and C#. Manning Publications. http://theswissbay.ch/pdf/Gentoomen%20Library/Programming/Functional%20Programming/Functional%20Programming%20For%20The%20Real%20World.pdf
+
+Reade, C. (1989). Elements of Functional Programming. Addison-Wesley. (ISBN 0-201-12915-9).
+
+GeeksforGeeks. (s.f.). Functional programming paradigm. https://www.geeksforgeeks.org/blogs/functional-programming-paradigm/
+
+EBSCO. (s.f.). Time complexity. Computer Science Research Starters. https://www.ebsco.com/research-starters/computer-science/time-complexity
